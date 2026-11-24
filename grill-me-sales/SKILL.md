@@ -3,7 +3,7 @@ name: grill-me-sales
 description: Interview a salesperson, in rounds, about who they are and how they sell, starting from their company website, then write a one-page context document they approve. Use when the user says "grill me", "interview me", "learn how I sell", or is setting up a sales assistant and has no context document yet.
 license: MIT (adapted from Matt Pocock's grilling skill, see NOTICE.md)
 metadata:
-  version: "0.2"
+  version: "0.3"
   author: MKTNG (mktng.co)
 ---
 
@@ -28,9 +28,11 @@ Open with one short message. Ask for:
 
 If the user already pasted some of this along with these instructions, don't ask for it again. Acknowledge what you have and ask only for what's missing.
 
+End the message by telling the user exactly what to send next, for example: "Reply with those, and I'll read your site and come back with my first guesses." 
+
 ## Step 2: Read the website, then confirm
 
-Read the company website: the home page, plus the about, services or products, and contact pages if you can reach them. Use only what's on the site.
+Read the company website: the home page, plus the about, services or products, and contact pages if you can reach them. Also read any other link the user gave you, such as a LinkedIn profile. If a page won't open, say which one. Use only what you actually read.
 
 Then show the user what you found as your first round of questions (format below). Cover:
 
@@ -48,17 +50,29 @@ Picture everything you still need to know as a tree of open questions. A questio
 
 Each round, ask the frontier and nothing else. A question that depends on an answer you haven't heard yet waits for a later round. Keep each round to five questions or fewer.
 
-Format each round like this:
+Format each round as plain text, not inside a code block, so it reads easily on a phone:
 
-```
-Q1. <short title>
-<the question, in plain words. Offer choices when that makes it easier.>
-My guess: <your best guess, based on everything so far>
+**Q1. Short title**
+The question, in plain words. Offer choices when that makes it easier.
+*My guess:* your best guess, based on everything so far.
 
-Q2. ...
-```
+**Q2.** ...
 
-Word every question so the user can answer "yes" to accept your guess. After each round, restate what you learned in two or three lines, then ask the next round.
+Word every question so the user can answer "yes" to accept your guess.
+
+**End every round with a clear next step,** on its own line, for example:
+
+> Reply **yes** to accept all of these, or give the number of any you want to change (like "Q3: it's closer to $5K").
+
+After the user replies, restate what you learned in two or three lines, then ask the next round.
+
+### Guesses the user can't just accept
+
+- **Some answers can't be guessed:** their top open deals, sample emails, anything only they know. Never put these in a round with guessable questions, where a blanket "yes" skips them. Ask them on their own, in one short message. If the user skips one, mark it open and move on.
+- **Numbers:** for deal sizes, prices, call counts and timelines, offer two or three ranges as choices instead of one guess. A "yes" to an invented number turns a guess into a fact.
+- **Access and rules:** when guessing what an assistant may connect to or do, guess the cautious option (read-only, ask first). The user can loosen it.
+- **Too many yeses:** if the user has accepted every guess for three rounds in a row, say so once and ask whether the guesses are right or just close enough. Then keep going.
+- **Side observations:** if you notice something unrelated to the interview (a broken page, an out-of-date fact on the site), save it and mention it once at the end, not in the middle.
 
 **Facts are your job. Decisions are theirs.** If you can look something up (the website, a public page the user points you to, a file they shared), look it up and confirm it with them instead of asking them to type it. Ask the user only for judgment, preferences and what only they know.
 
@@ -97,8 +111,9 @@ Many people answer by voice. When answers come in long and loose:
 
 1. Tell the user the interview looks complete, and list anything still open.
 2. Show a short summary under the nine headings above.
-3. Ask: "Is anything here wrong or missing?" Make every correction.
-4. When the user confirms, write the final context document: one page, plain words, under these headings:
+3. Mark which items the user stated in their own words and which are guesses they accepted, so they can spot anything that's only close enough.
+4. Ask: "Reply **looks right** and I'll write the document, or tell me what to change." Make every correction.
+5. When the user confirms, write the final context document: one page, plain words, under these headings:
    - Who I am
    - My company and what we sell
    - Who buys from me
@@ -106,7 +121,7 @@ Many people answer by voice. When answers come in long and loose:
    - How I sound
    - Never do this without asking me
    - Open questions
-5. Tell the user to save it somewhere they'll find it again, and to paste it into any AI assistant that works for them.
+6. Tell the user to save it somewhere they'll find it again, and to paste it into any AI assistant that works for them.
 
 ## It's working if
 
